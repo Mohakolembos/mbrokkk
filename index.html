@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مبروك عبد الله</title>
+    <style>
+        @keyframes moveText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        #message {
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: moveText 5s linear infinite; /* سرعة الحركة */
+            position: absolute; /* لجعل الكلمة تظهر فوق الفيديو */
+            top: 10%; /* تعديل الموضع العمودي */
+            left: 0; /* بدء الحركة من اليمين */
+            font-size: 2em; /* حجم الخط */
+            text-align: center;
+            width: 100%; /* لجعل النص يتوسط الشاشة */
+        }
+        #videoContainer {
+            position: relative; /* لتحديد موقع الفيديو */
+            text-align: center;
+            display: none; /* إخفاء الفيديو حتى الضغط */
+        }
+        button {
+            background-color: red; /* لون الزر أحمر */
+            color: white; /* لون الخط أبيض */
+            padding: 10px 20px; /* إضافة padding للزر */
+            font-size: 1.5em; /* حجم خط الزر */
+            border: none; /* إزالة الحدود */
+            border-radius: 5px; /* إضافة زوايا دائرية */
+            cursor: pointer; /* تغيير شكل المؤشر عند المرور على الزر */
+            display: block; /* لجعل الزر يظهر في الوسط */
+            margin: 20px auto; /* محاذاة الزر في الوسط */
+        }
+    </style>
+</head>
+<body>
+    <div id="videoContainer"> <!-- إظهار الفيديو بعد الضغط -->
+        <h1 id="message" style="display: none;">مبروك عبد الله</h1> <!-- إظهار الرسالة بعد الضغط -->
+        <iframe id="video" width="600" height="400" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <button id="playButton">لا تشغل</button> <!-- تغيير اسم الزر -->
+
+    <audio id="audio" src="رابط_الصوت_الخاصة بك.aac"></audio> <!-- تأكد من وضع رابط الصوت الصحيح -->
+
+    <script>
+        document.getElementById('playButton').onclick = function() {
+            document.getElementById('message').style.display = 'block'; // إظهار الرسالة
+            document.getElementById('videoContainer').style.display = 'block'; // إظهار الفيديو
+
+            // تعيين رابط الفيديو مع التشغيل التلقائي
+            var videoSrc = "https://www.youtube.com/embed/fqFI96xMmMU?autoplay=1&mute=0"; // رابط الفيديو المدمج
+            document.getElementById('video').src = videoSrc; // تعيين src للفيديو
+            
+            // تشغيل الصوت
+            var audio = document.getElementById('audio');
+            audio.play().catch(function(error) {
+                console.log("حدث خطأ أثناء تشغيل الصوت:", error);
+            });
+        };
+    </script>
+</body>
+</html>
